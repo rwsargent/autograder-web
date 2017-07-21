@@ -1,0 +1,154 @@
+#comment-box {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    line-height: 1;
+    border: black 1px solid;
+    min-height: 235px;
+    padding: 9px;
+    margin-top: 0px;    
+}
+
+.ctrl-panel {
+    width: 250px;
+    height: 250px;
+    background-color: blue;
+}
+
+.form-wrapper {
+    height: 50vh;
+    text-align: center;
+    background-color: $u-red;
+}
+.login-form {
+    min-width: 250px;
+    margin: auto;
+}
+
+.login {
+    padding-top:4%;
+}
+
+.failed {
+    text-align: center;
+    color: red;
+}
+
+.score-box.card-panel.done {
+    border : 2px solid #43a047;
+}
+
+.logout.left {
+    margin-left: 19px;
+    cursor: pointer;
+}
+
+
+.content {
+    .force-circle {
+        border-radius : 50%;            
+    }
+
+    .row.pic-wrapper {
+        position:relative;
+    }
+    a.to-the-bot {
+        position:absolute;
+        bottom: 10px;
+    }
+    .card.pad-bottom {
+        margin-bottom : 10px;
+    }
+    .card.margin-vertical {
+        margin: 20px;
+    }
+    img.force-circle {
+        border-radius : 50%;
+    }
+    .card.hover {
+        &:hover {
+            @extend .z-depth-1-half;
+        }
+    }
+    div {
+        margin: auto;
+    }
+    img.center-image {
+        display: block;
+        margin:auto;
+        width:45%;
+    }
+    .card-panel.main.container {
+        margin-bottom: 5%;
+        margin-top: 4%
+    }
+    .card-panel.picture {
+
+        margin: 45px 0;
+        text-align:center;
+        
+    }
+
+    .logo{ 
+        width: 12.5%;
+    }
+    img.aqua {
+        width : 70%;
+        margin-left: 19%;
+    }
+
+    .row.rsvp.radio {
+        margin-top :10px;
+    }
+}
+
+.top-nav-bar {
+    margin: 20px 0;
+    .student-name.left {
+        padding-left: 3%;
+    }
+}
+
+.u-wrapper{
+    background:white;
+    width: 10%;
+    float : left;
+
+    img.left.responsive-img.loader {
+        width: 20px;
+    }
+}
+
+a.logo {
+    padding: 2%;     
+}
+
+.score-box {
+    border : 1px solid;
+}
+
+input[type=text].password {
+    &:focus, &:active {
+                 border-bottom: 1px solid black;
+                 box-shaodw: 0 1px 0 0 black;
+             }
+
+    &:focus, &:active + label {
+                 color: black;
+             }
+}
+
+// Example of extending materialize classes
+.btn-red {
+    @extend .btn;
+    background-color: $u-red;
+    
+    &:hover, {
+        background-color: lighten($u-red, 7%);
+        @extend .z-depth-1-half;
+    }
+}
+
+.clear-fix {
+    clear:both;
+}
+

@@ -1,0 +1,17 @@
+.chart rect {
+    fill : #9e9e9e;
+    &.choice {
+        fill : $u-red;
+    }
+}
+
+.char text {
+    fill: white;
+    font : 10px sans-serif;
+    text-anchor: middle;
+}
+
+.choice {
+    fill : $u-red;
+    color : $u-red;
+}

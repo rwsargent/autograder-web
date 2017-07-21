@@ -1,0 +1,18 @@
+// Defining some basic colorings to override materialize defaults
+
+/*** Colors ***/
+$primary-color: #CC0000;
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+
+$secondary-color: #212121;
+$secondary-color-light: #616161;
+$secondary-color-dark: #000000;
+
+$u-red: $primary-color;
+
+
+/*collection overridse*/
+$collection-active-bg-color: $primary-color-light;
+$collection-active-color: white;
+$collection-hover-bg-color: $primary-color-light;

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Autograder</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1", charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  
+  <!-- fall backs -->
+  <script>if (!window.jQuery) { document.write('<script src="/javascripts/plugins/jquery.min.js"><\\/script>'); }</script>
+  <script>$.fn.materialbox || document.write('<script src="/javascripts/plugins/materialize.min.js"><\\/script>');</script>
+  
+  <script src="js/dependencies.js"></script>
+  <script th:data-main="${module}" src="js/libs/require.js"></script>
+</head>
+<body>
+  <div class="container">
+    <nav class="top-nav-bar">
+      <div class="nav-wrapper">
+        <span class="brand-logo">Autograder-Web</span>
+        <ul id="nav-mobile" class="right">
+          <li><a href="/assignments">Assignments</a></li>
+          <li><a href="/labs">Labs</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section layout:fragment="content">
+      <div>
+        <h2>SAD!</h2>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
