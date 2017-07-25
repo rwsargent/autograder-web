@@ -1,5 +1,6 @@
 package edu.utah.autograder.entities;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.UUID;
 
@@ -12,6 +13,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+
+import autograderutils.AutograderResult;
 
 @Entity
 public class Submission {
@@ -38,6 +41,23 @@ public class Submission {
 	
 	@Column(nullable = false)
 	private String assignmentId;
+	
+	@Column
+	private int score;
+	
+	@Column
+	private int total;
+	
+	@Column
+	private String graderOutput;
+	
+	public Submission(String filename, byte[] fileContents, String studentId, String assignmentId) {
+		this.fileName = filename;
+		this.fileContents = fileContents;
+		this.studentId = studentId;
+		this.assignmentId = assignmentId;
+		this.uploadtime = Date.from(Instant.now());
+	}
 
 	public UUID getId() {
 		return id;
@@ -85,5 +105,33 @@ public class Submission {
 
 	public void setAssignmentId(String assignmentId) {
 		this.assignmentId = assignmentId;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public String getGraderOutput() {
+		return graderOutput;
+	}
+
+	public void setGraderOutput(String graderOutput) {
+		this.graderOutput = graderOutput;
+	}
+	
+	public void addResult(AutograderResult result) {
+		
 	}
 }

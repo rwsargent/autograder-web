@@ -1,8 +1,5 @@
 package edu.utah.autograder;
 
-import java.sql.Date;
-import java.time.Instant;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -19,7 +16,6 @@ public class LoginController {
 	
 	private PortalConnection portalConnection;
 	private SubmissionRepository submissionRepository;
-	
 
 	@Inject
 	public LoginController(PortalConnection canvasConnection, SubmissionRepository submissionRepository) {
@@ -30,14 +26,9 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String loggingInWhat(Model model) {
 		model.addAttribute("name", portalConnection.getStudents().getName());
-		Submission submission = new Submission();
-		submission.setAssignmentId("assignmentid");
 		byte[] contents = new byte[256];
 		new SecureRandom().engineNextBytes(contents);
-		submission.setFileContents(contents);
-		submission.setFileName("File Name");
-		submission.setStudentId("studentId");
-		submission.setUploadTime(Date.from(Instant.now()));
+		Submission submission = new Submission("", contents, "", "");
 		submissionRepository.save(submission);
 		return "login";
 	}
