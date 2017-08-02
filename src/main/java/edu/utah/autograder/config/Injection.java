@@ -18,6 +18,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import edu.utah.autograder.assignments.AssignmentCache;
+import edu.utah.autograder.grading.AssignmentGrader;
 import edu.utah.autograder.network.CanvasConnection;
 import edu.utah.autograder.network.PortalConnection;
 import edu.utah.autograder.services.AssignmentService;
@@ -57,6 +59,16 @@ public class Injection {
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
+	}
+	
+	@Bean
+	public AssignmentGrader assignmentGrader() {
+		return new AssignmentGrader();
+	}
+	
+	@Bean
+	public AssignmentCache assignmentCache() {
+		return new AssignmentCache();
 	}
 
 	private InputStream findFile(String path) throws FileNotFoundException {
