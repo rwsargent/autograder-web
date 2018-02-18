@@ -2,6 +2,7 @@ package com.github.rwsargent.api;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,6 +19,7 @@ public class AutoGraderResource {
     private final String defaultName;
     private final AtomicLong counter;
 
+    @Inject
     public AutoGraderResource(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;

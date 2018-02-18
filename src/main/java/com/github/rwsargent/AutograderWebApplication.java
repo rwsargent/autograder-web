@@ -1,17 +1,22 @@
 package com.github.rwsargent;
 
-import com.github.rwsargent.api.AutoGraderResource;
+import com.github.rwsargent.modules.AutograderWebModule;
+import com.hubspot.dropwizard.guice.GuiceBundle;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
 
 public class AutograderWebApplication extends Application<AutograderWebConfiguration>{
+	
+	private GuiceBundle<AutograderWebConfiguration> guiceBundle;
+
 
 	@Override
-	public void run(AutograderWebConfiguration config, Environment env) throws Exception {
-		AutoGraderResource resource = new AutoGraderResource(config.getTemplate(), config.getDefaultName());
-		env.jersey().register(resource);
+	public void run(AutograderWebConfiguration config, Environment environment) throws Exception {
+//		AutoGraderResource resource = new AutoGraderResource(config.getTemplate(), config.getDefaultName());
+//		environment.jersey().register(resource);
 	}
 	
 	@Override
@@ -21,5 +26,18 @@ public class AutograderWebApplication extends Application<AutograderWebConfigura
 	
 	@Override
 	public void initialize(Bootstrap<AutograderWebConfiguration> bootstrap) {
+		guiceBundle = GuiceBundle.<AutograderWebConfiguration>newBuilder()
+	      .addModule(new AutograderWebModule())
+	      .setConfigClass(AutograderWebConfiguration.class)
+	      .enableAutoConfig(getClass().getPackage().getName())
+	      .build();
+		
+		bootstrap.addBundle(guiceBundle);
+		bootstrap.addBundle(new ViewBundle<AutograderWebConfiguration>());
+		
+	}
+	
+	public static void main(String[] args) throws Exception {
+		new AutograderWebApplication().run(args);
 	}
 }
