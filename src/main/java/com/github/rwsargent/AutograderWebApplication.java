@@ -4,6 +4,7 @@ import com.github.rwsargent.modules.AutograderWebModule;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
@@ -26,6 +27,8 @@ public class AutograderWebApplication extends Application<AutograderWebConfigura
 	
 	@Override
 	public void initialize(Bootstrap<AutograderWebConfiguration> bootstrap) {
+		bootstrap.addBundle(new AssetsBundle("/static", "/public"));
+		
 		guiceBundle = GuiceBundle.<AutograderWebConfiguration>newBuilder()
 	      .addModule(new AutograderWebModule())
 	      .setConfigClass(AutograderWebConfiguration.class)
